@@ -22,7 +22,7 @@ Either use ``pip``, which is the easiest way:
 
     $ pip install vecc
 
-Either download the tarball from http://pypi.python/org/pypi/vecc, untar it,
+Either download the tarball from http://pypi.python.org/pypi/vecc, untar it,
 and install it manually:
 
 ::

@@ -12,7 +12,26 @@ This is where vecc is useful: it detects the video provider and id from a given
 embed code, and provides various utilities to clean this code and validate that
 the video is still available.
 
-Check usage:
+
+Install
+=======
+
+Either use ``pip``, which is the easiest way:
+
+::
+
+    $ pip install vecc
+
+Either download the tarball from http://pypi.python/org/pypi/vecc, untar it,
+and install it manually:
+
+::
+
+    $ python setup.py install
+
+
+Usage
+=====
 
 ::
 

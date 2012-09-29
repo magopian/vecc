@@ -11,3 +11,43 @@ devices.
 This is where vecc is useful: it detects the video provider and id from a given
 embed code, and provides various utilities to clean this code and validate that
 the video is still available.
+
+Check usage:
+
+::
+
+    $ vecc -h
+    usage: vecc [-h] [--version] {clean,validate} ...
+
+    Video Embed Code Cleaner.
+
+    optional arguments:
+      -h, --help        show this help message and exit
+      --version         show program's version number and exit
+
+    sub-commands:
+      {clean,validate}
+        clean           clean the embed code
+        validate        validate that the video is still available
+
+
+Sub-commands
+============
+
+* ``clean``: takes a video embed code, and returns the video id, provider, and
+  new embed code. Takes an optional ``-v|--validate`` parameter, to check if
+  the video is still available.
+* ``validate``: takes a video id and provider, and check if it's still
+  available.
+
+
+Example
+=======
+
+::
+
+    $ vecc clean '<object width="480" height="381"><param name="movie" value="http://www.dailymotion.com/swf/k6Lg9UXest3kho5p9X&related=0"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://www.dailymotion.com/swf/k6Lg9UXest3kho5p9X&related=0" type="application/x-shockwave-flash" width="480" height="381" allowFullScreen="true" allowScriptAccess="always"></embed></object>' -v
+    video id: k6Lg9UXest3kho5p9X
+    provider: dailymotion
+    embed code: <iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/k6Lg9UXest3kho5p9X"></iframe>
+    This video is still valid

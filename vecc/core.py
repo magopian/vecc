@@ -57,7 +57,7 @@ def validate(video_id, provider, providers=PROVIDERS, helper=requests):
     """True if the status code of the url is less than 400."""
     validation_link = get_validation(video_id, provider, providers)
     if validation_link is None:
-        return False
+        return
     try:
         req = helper.head(validation_link)
         return req.status_code < 400

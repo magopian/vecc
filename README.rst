@@ -70,3 +70,26 @@ Example
     provider: dailymotion
     embed code: <iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/k6Lg9UXest3kho5p9X"></iframe>
     This video is still valid
+
+
+Providers
+=========
+
+Video providers (Google video, Youtube, Vimeo, Dailymotion...) are configured
+in the ``vecc/providers.py`` file.
+
+Each provider configuration consists of:
+
+* name: youtube
+* link template: string template (that'll be interpolated with format_) used to
+  build the cleaned code. This is the link to the embedded video player. Needs
+  the ``{video_id}`` tag.
+* embed template: string template used to build the new embed code. Needs the
+  ``{video_link}`` tag.
+* validation template: string template used to build the link used to validate
+  that the video is still available. This is the link to the video itself (as
+  seen on the provider's website). Needs the ``{video_id}`` tag.
+* matches: regular expressions used to "match" a video embed code to a video
+  provider. Must capture the video id.
+
+.. _format: http://docs.python.org/library/functions.html#format

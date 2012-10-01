@@ -39,6 +39,7 @@ PROVIDERS = {
         'embed_template': r"""<iframe frameborder="0" width="480" height="270" src="{video_link}"></iframe>""",
         'validation_template': r"""http://www.dailymotion.com/video/{video_id}""",
         'matches': [
+            r"""dailymotion.[^/]+/swf/video/([^\\"'/&?@]+)""",
             r"""dailymotion.[^/]+/swf/([^\\"'/&?@]+)""",
             r"""dailymotion.[^/]+/embed/video/([^\\"'/&?@]+)""",
         ]

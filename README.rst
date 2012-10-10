@@ -93,3 +93,15 @@ Each provider configuration consists of:
   provider. Must capture the video id.
 
 .. _format: http://docs.python.org/library/functions.html#format
+
+
+Changelog
+=========
+
+* **v0.5**:
+
+  * compatibility with python2.6: ``argparse`` as a dependency
+
+* **v0.4**:
+
+  * compatibility with python2.6: ``format`` needs field numbers

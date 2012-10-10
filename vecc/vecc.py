@@ -54,7 +54,7 @@ def main():
     parser_validate.set_defaults(func=valid)
 
     parser.add_argument('--version', action='version',
-            version='%(prog)s {}'.format(__version__))
+            version='%(prog)s {0}'.format(__version__))
 
     args = parser.parse_args()
     args.func(args)

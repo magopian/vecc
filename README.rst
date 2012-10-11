@@ -98,6 +98,17 @@ Each provider configuration consists of:
 Changelog
 =========
 
+* **v0.7**:
+
+  * dropped allowfullscreen
+  * added autoPlay=1&related=0 on video links
+
+* **v0.6**:
+
+  * video size of the cleaned embed code is now 480x395
+  * all embed codes with iframes use the same format with
+    allowfullscreen="true", autoPlay="1", related="0"
+
 * **v0.5**:
 
   * compatibility with python2.6: ``argparse`` as a dependency

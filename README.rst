@@ -2,6 +2,10 @@
 Video Embed Code Cleaner
 ########################
 
+.. image:: https://secure.travis-ci.org/magopian/vecc.png
+   :alt: Build Status
+   :target: https://secure.travis-ci.org/magopian/vecc
+
 Cleans and updates your video's embed code.
 
 Over time, the embed codes used for videos from various providers have changed

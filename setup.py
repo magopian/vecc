@@ -7,12 +7,6 @@ from setuptools import find_packages
 with open('README.rst') as readme:
     long_description = readme.read()
 
-with open('requirements.txt') as reqs:
-    install_requires = [
-        line for line in reqs.read().split('\n') if (line and not
-                                                     line.startswith('--'))
-    ]
-
 setup(
     name='vecc',
     version=__import__('vecc').__version__,
@@ -31,10 +25,15 @@ setup(
         'Natural Language :: English',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.1',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
     ],
     zip_safe=False,
-    install_requires=install_requires,
+    install_requires=['argparse', 'requests'],
     entry_points="""
         [console_scripts]
             vecc = vecc.vecc:main"""

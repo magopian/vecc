@@ -16,7 +16,7 @@ from .providers import PROVIDERS
 
 def match(embed_code, providers=PROVIDERS):
     """Return (video_id, provider) by looking for a match on the embed code."""
-    for provider, data in providers.iteritems():
+    for provider, data in providers.items():
         for match in data['matches']:
             res = re.search(match, embed_code,
                             flags=re.IGNORECASE | re.MULTILINE)

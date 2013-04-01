@@ -60,8 +60,8 @@ class CoreTest(TestCase):
 
     def test_match_provider_not_found(self):
         video_id, provider = match('stuff video/barbaz', PROVIDERS)
-        self.assertIsNone(video_id)
-        self.assertIsNone(provider)
+        self.assertTrue(video_id is None)
+        self.assertTrue(provider is None)
 
     def test_get_link(self):
         link = get_link('barbaz', 'Foo', PROVIDERS)
@@ -69,7 +69,7 @@ class CoreTest(TestCase):
 
     def test_get_link_provider_not_found(self):
         link = get_link('barbaz', 'Baz', PROVIDERS)
-        self.assertIsNone(link)
+        self.assertTrue(link is None)
 
     def test_get_validation(self):
         validation = get_validation('barbaz', 'Foo', PROVIDERS)
@@ -77,7 +77,7 @@ class CoreTest(TestCase):
 
     def test_get_validation_provider_not_found(self):
         validation = get_link('barbaz', 'Baz', PROVIDERS)
-        self.assertIsNone(validation)
+        self.assertTrue(validation is None)
 
     def test_get_clean_code(self):
         clean_code = get_clean_code('barbaz', 'Foo', PROVIDERS)
@@ -85,7 +85,7 @@ class CoreTest(TestCase):
 
     def test_get_clean_code_provider_not_found(self):
         clean_code = get_clean_code('barbaz', 'Baz', PROVIDERS)
-        self.assertIsNone(clean_code)
+        self.assertTrue(clean_code is None)
 
     def test_validate_200(self):
         validated = validate('barbaz', 'Foo', PROVIDERS, Helper(200))

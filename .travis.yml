@@ -5,8 +5,8 @@ python:
   - "3.2"
   - "3.3"
 install:
-  - pip install --use-mirrors argparse coverage flake8 requests
   - python setup.py develop
+  - pip install --use-mirrors argparse coverage flake8 nose requests
 script:
-  - python -m unittest
-  - flake8 mailbot
+  - nosetests --with-coverage --cover-branches --cover-package=vecc
+  - flake8 vecc

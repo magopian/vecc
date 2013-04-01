@@ -4,7 +4,7 @@ Video Embed Code Cleaner
 
 .. image:: https://secure.travis-ci.org/magopian/vecc.png
    :alt: Build Status
-   :target: https://secure.travis-ci.org/magopian/vecc
+   :target: https://travis-ci.org/magopian/vecc
 
 Cleans and updates your video's embed code.
 
@@ -101,6 +101,11 @@ Each provider configuration consists of:
 
 Changelog
 =========
+
+* **v0.8**:
+
+  * compatible python 2.6 to python 3.3
+  * 100% test coverage
 
 * **v0.7**:
 

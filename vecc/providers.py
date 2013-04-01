@@ -10,7 +10,7 @@ List here the video providers that should be used to match a video.
 PROVIDERS = {
     'youtube': {
         'link_template': 'http://www.youtube.com/embed/'
-                         '{video_id}?autoPlay=1&related=0',
+                         '{video_id}?autoPlay=1&rel=0',
         'embed_template': '<iframe width="480" height="395" '
                           'src="{video_link}" frameborder="0"></iframe>',
         'validation_template': 'http://www.youtube.com/watch?v={video_id}',

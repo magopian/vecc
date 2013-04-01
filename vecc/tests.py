@@ -28,6 +28,8 @@ class Helper(object):
         self.status_code = status_code
 
     def head(self, link):
+        if self.status_code is None:
+            raise
         return self
 
 
@@ -101,4 +103,8 @@ class CoreTest(TestCase):
 
     def test_validate_provider_not_found(self):
         validated = validate('barbaz', 'Baz', PROVIDERS, Helper(200))
+        self.assertFalse(validated)
+
+    def test_validate_raise(self):
+        validated = validate('barbaz', 'Foo', PROVIDERS, Helper(None))
         self.assertFalse(validated)

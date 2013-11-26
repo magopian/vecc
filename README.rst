@@ -102,6 +102,12 @@ Each provider configuration consists of:
 Changelog
 =========
 
+* **v0.9**:
+
+  * use schema-less urls for the default providers
+  * make travis use tox
+  * provide a wheel package
+
 * **v0.8**:
 
   * compatible python 2.6 to python 3.3

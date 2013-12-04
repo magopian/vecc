@@ -102,6 +102,10 @@ Each provider configuration consists of:
 Changelog
 =========
 
+* **v0.10**:
+
+  * fix print in py2 following porting to py3
+
 * **v0.9**:
 
   * use schema-less urls for the default providers

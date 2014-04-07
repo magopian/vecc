@@ -6,6 +6,8 @@ from __future__ import print_function
 import argparse
 import sys
 
+import requests
+
 from . import __version__
 from .core import get_clean_code, match, validate
 
@@ -19,28 +21,39 @@ def clean(args):
         print("provider:", provider)
         print("embed code:", clean_code)
         if args.validate:
-            if validate(video_id, provider):
-                print("This video is still available")
-            else:
-                sys.exit("This video is not available anymore")
-        sys.exit()
-    sys.exit("Provider not found")
+            setattr(args, 'video_id', video_id)
+            setattr(args, 'provider', provider)
+            valid(args)
+    print("Provider not found")
+    sys.exit(2)
 
 
 def valid(args):
     """Validate that a video is still available."""
-    valid = validate(args.video_id, args.provider)
+    try:
+        valid = validate(args.video_id, args.provider, args.timeout)
+    except requests.exceptions.Timeout:
+        print("Timeout while validating the video")
+        sys.exit(1)
+
     if valid is None:
-        sys.exit("Provider not found")
+        print("Provider not found")
+        sys.exit(2)
     elif valid:
         print("This video is still available")
         sys.exit()
     else:
-        sys.exit("This video is not available anymore")
+        print("This video is not available anymore")
+        sys.exit(3)
 
 
 def main():
     parser = argparse.ArgumentParser(description='Video Embed Code Cleaner.')
+    parser.add_argument(
+        '-t', '--timeout',
+        type=float,
+        default=10,
+        help='timeout for the validation (10 seconds by default)')
     subparsers = parser.add_subparsers(title='sub-commands')
 
     parser_clean = subparsers.add_parser('clean', help='clean the embed code')

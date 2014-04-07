@@ -27,7 +27,7 @@ class Helper(object):
     def __init__(self, status_code):
         self.status_code = status_code
 
-    def head(self, link):
+    def head(self, link, timeout):
         if self.status_code is None:
             raise
         return self
@@ -90,21 +90,21 @@ class CoreTest(TestCase):
         self.assertTrue(clean_code is None)
 
     def test_validate_200(self):
-        validated = validate('barbaz', 'Foo', PROVIDERS, Helper(200))
+        validated = validate('barbaz', 'Foo', 10, PROVIDERS, Helper(200))
         self.assertTrue(validated)
 
     def test_validate_301(self):
-        validated = validate('barbaz', 'Foo', PROVIDERS, Helper(301))
+        validated = validate('barbaz', 'Foo', 10, PROVIDERS, Helper(301))
         self.assertTrue(validated)
 
     def test_validate_400(self):
-        validated = validate('barbaz', 'Foo', PROVIDERS, Helper(400))
+        validated = validate('barbaz', 'Foo', 10, PROVIDERS, Helper(400))
         self.assertFalse(validated)
 
     def test_validate_provider_not_found(self):
-        validated = validate('barbaz', 'Baz', PROVIDERS, Helper(200))
+        validated = validate('barbaz', 'Baz', 10, PROVIDERS, Helper(200))
         self.assertFalse(validated)
 
     def test_validate_raise(self):
-        validated = validate('barbaz', 'Foo', PROVIDERS, Helper(None))
+        validated = validate('barbaz', 'Foo', 10, PROVIDERS, Helper(None))
         self.assertFalse(validated)

@@ -53,13 +53,16 @@ def get_clean_code(video_id, provider, providers=PROVIDERS):
     return template.format(video_link=video_link)
 
 
-def validate(video_id, provider, providers=PROVIDERS, helper=requests):
+def validate(video_id, provider, timeout=10, providers=PROVIDERS,
+             helper=requests):
     """True if the status code of the url is less than 400."""
     validation_link = get_validation(video_id, provider, providers)
     if validation_link is None:
         return
     try:
-        req = helper.head(validation_link)
+        req = helper.head(validation_link, timeout=timeout)
         return req.status_code < 400
+    except requests.exceptions.Timeout:
+        raise
     except:
         return False

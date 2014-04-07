@@ -46,6 +46,8 @@ Usage
 
     optional arguments:
       -h, --help        show this help message and exit
+      -t TIMEOUT, --timeout TIMEOUT
+                        timeout for the validation (10 seconds by default)
       --version         show program's version number and exit
 
     sub-commands:
@@ -62,6 +64,16 @@ Sub-commands
   the video is still available.
 * ``validate``: takes a video id and provider, and check if it's still
   available.
+
+
+Return codes
+============
+
+There's three different return codes possible:
+
+* ``1``: Timeout while validating (doing a ``HEAD`` request) the video
+* ``2``: Provider not found
+* ``3``: The video is not available anymore
 
 
 Example

@@ -24,6 +24,7 @@ def clean(args):
             setattr(args, 'video_id', video_id)
             setattr(args, 'provider', provider)
             valid(args)
+        sys.exit()
     print("Provider not found")
     sys.exit(2)
 

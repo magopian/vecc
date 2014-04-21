@@ -114,6 +114,10 @@ Each provider configuration consists of:
 Changelog
 =========
 
+* **v0.12**:
+
+  * Fix previous commit that broke ``vecc.clean``
+
 * **v0.11**:
 
   * added a ``timeout`` parameter for the validation

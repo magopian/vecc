@@ -15,7 +15,7 @@ devices.
 This is where vecc is useful: it detects the video provider and id from a given
 embed code, and provides various utilities to clean this code and validate that
 the video is still available.
-test
+
 
 Install
 =======
@@ -56,6 +56,7 @@ Usage
         validate        validate that the video is still available
 
 
+
 Sub-commands
 ============
 
@@ -64,6 +65,7 @@ Sub-commands
   the video is still available.
 * ``validate``: takes a video id and provider, and check if it's still
   available.
+
 
 
 Return codes
@@ -86,6 +88,32 @@ Example
     provider: dailymotion
     embed code: <iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/k6Lg9UXest3kho5p9X"></iframe>
     This video is still valid
+
+
+API
+===
+
+* ``extract``: takes a video embed code return the following values:
+
+  - ``status``: ``True`` if ``vecc`` has extracted video info, ``False`` else. See ``errno`` and ``errmsg`` for extended info about error
+  - ``video_id``: extracted video ID
+  - ``provider``: recognized provider
+  - ``clean_code``: embeded code
+  - ``real_link``: web browser link to video with player
+  - ``errno``: if ``errno`` > 0: HTTP request error code or specific API error code, if ``errno`` == ``-1``: global connection error, i.e. no connection to provider (no internet connection or provider website down), if ``errno`` == ``-2``: wrong code format
+  - ``errmsg``: error message related to error code.
+
+
+Code example
+============
+
+::
+
+    # import extract from vecc library
+    from vecc import extract
+
+    video_link = 'a video url'
+    video_infos = extract(video_link, ['mp4', 'flv'])
 
 
 Providers
@@ -113,6 +141,22 @@ Each provider configuration consists of:
 
 Changelog
 =========
+
+* **v1.0**:
+
+  * lots of bugfixes after testing 20000 different video links, first mature version
+
+* **v0.15**:
+
+  * added facebook API
+
+* **v0.14**:
+
+  * added streaming providers
+
+* **v0.13**:
+
+  * added extract function
 
 * **v0.12**:
 

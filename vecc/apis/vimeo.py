@@ -13,7 +13,7 @@ from functools import wraps
 
 from .webapi import WebAPI, APIError
 
-from ..vecc import providers, core
+from .. import providers, core
 
 
 class VimeoAPI(WebAPI):

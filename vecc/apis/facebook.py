@@ -19,7 +19,8 @@ def set_fb_token(token):
 
 class FacebookAPI(WebAPI):
     __token__ = 'not_set_put_one'
-    __part__ = 'created_time,description,length,picture,source,title,status,published,privacy'
+    __part__ = ('created_time,description,length,picture,source,' +
+        'title,status,published,privacy,content_tags,content_category')
     __url__ = ('/v2.6/{video_id}?fields={part}')
 
     def __init__(self):
@@ -75,4 +76,6 @@ class FacebookAPI(WebAPI):
             if 'created_time' in self._data:
                 self._results['created_date'] = \
                     dateutil.parser.parse(self._data['created_time'])
+            if 'content_tags' in self._data:
+                self._results['tags'] = self._data['content_tags']
         return self._results

@@ -3,4 +3,7 @@
 
 __version__ = '1.0'
 
-from vecc import extract, clean, valid
+try:
+    from vecc import extract, clean, valid
+except:
+    pass

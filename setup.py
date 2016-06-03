@@ -33,7 +33,7 @@ setup(
         'Programming Language :: Python :: 3.3',
     ],
     zip_safe=False,
-    install_requires=['argparse', 'requests'],
+    install_requires=['argparse', 'requests', 'python-dateutil'],
     entry_points="""
         [console_scripts]
             vecc = vecc.vecc:main"""

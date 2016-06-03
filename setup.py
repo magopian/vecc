@@ -10,16 +10,16 @@ with open('README.rst') as readme:
 setup(
     name='vecc',
     version=__import__('vecc').__version__,
-    author='Mathieu Agopian',
+    author='Mathieu Agopian and more',
     author_email='mathieu.agopian@gmail.com',
     packages=find_packages(),
     include_package_data=True,
-    url='https://github.com/magopian/vecc',
+    url='https://github.com/ellimac54/vecc',
     license='BSD',
     description='Video Embed Code Cleaner',
     long_description=long_description,
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Natural Language :: English',
@@ -33,7 +33,7 @@ setup(
         'Programming Language :: Python :: 3.3',
     ],
     zip_safe=False,
-    install_requires=['argparse', 'requests'],
+    install_requires=['argparse', 'requests', 'python-dateutil', 'beautifulsoup4', 'facepy'],
     entry_points="""
         [console_scripts]
             vecc = vecc.vecc:main"""

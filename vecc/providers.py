@@ -7,6 +7,52 @@ List here the video providers that should be used to match a video.
 
 """
 
+LIVE_PROVIDERS = {
+    'youtube': {
+        'link_template': '//www.youtube.com/embed/'
+                         '{video_id}?autoplay=1&rel=0',
+        'embed_template': '<iframe width="480" height="395" '
+                          'src="{video_link}" frameborder="0"></iframe>',
+        'validation_template': 'http://www.youtube.com/watch?v={video_id}',
+        'matches': [
+            r"""youtube.[^/]+/watch\?[^v]*v\=([^"'/&?@]+)""",
+            r"""youtu.be/([^"'/&?@]+)""",
+            r"""youtube.[^/]+/v/([^"'/&?@]+)""",
+            r"""youtube.[^/]+/embed/([^"'/&?@]+)""",
+        ]
+    },
+    'creacast': {
+        'link_template': 'http://www.creacast.com/'
+                         '{video_id}',
+        'embed_template': '<iframe width="480" height="395" '
+                          'src="{video_link}" frameborder="0"></iframe>',
+        'validation_template': 'http://www.creacast.com/{video_id}',
+        'matches': [
+            r"""creacast.[^/]+/([^"'/]+)""",
+        ]
+    },
+    'piksel': {
+        'link_template': 'http://player.piksel.com/'
+                         '{video_id}',
+        'embed_template': '<iframe width="480" height="395" '
+                          'src="{video_link}" frameborder="0"></iframe>',
+        'validation_template': 'http://player.piksel.com/{video_id}',
+        'matches': [
+            r"""piksel.[^/]+/([^"'/]+)""",
+        ]
+    },
+    'lightcastmedia': {
+        'link_template': 'http://{video_id}',
+        'embed_template': '<iframe width="480" height="395" '
+                          'src="{video_link}" frameborder="0"></iframe>',
+        'validation_template': '{video_id}',
+        'matches': [
+            r"""([a-zA-Z0-9]+\.lightcastmedia.[^/]+/.+)""",
+        ]
+    },
+}
+
+
 PROVIDERS = {
     'youtube': {
         'link_template': '//www.youtube.com/embed/'
@@ -15,6 +61,8 @@ PROVIDERS = {
                           'src="{video_link}" frameborder="0"></iframe>',
         'validation_template': 'http://www.youtube.com/watch?v={video_id}',
         'matches': [
+            r"""youtube.[^/]+/watch\?[^v]*v\=([^"'/&?@]+)""",
+            r"""youtu.be/([^"'/&?@]+)""",
             r"""youtube.[^/]+/v/([^"'/&?@]+)""",
             r"""youtube.[^/]+/embed/([^"'/&?@]+)""",
         ]
@@ -28,6 +76,9 @@ PROVIDERS = {
         'matches': [
             r"""vimeo.[^/]+/video/([^"'/&?@]+)""",
             r"""vimeo.[^/]+/moogaloop.swf\?clip_id=([^"'/&?@]+)""",
+            r"""vimeo.[^/]+/[a-z]+/([^a-z"'/&?@]+)""",
+            r"""vimeo.[^/]+/[a-z]+/[a-z]+/([^a-z"'/&?@]+)""",
+            r"""vimeo.[^/]+/([^"'/&?@]+)""",
         ]
     },
     'google': {
@@ -54,6 +105,8 @@ PROVIDERS = {
             r"""dailymotion.[^/]+/swf/video/([^"'/&?@]+)""",
             r"""dailymotion.[^/]+/swf/([^"'/&?@]+)""",
             r"""dailymotion.[^/]+/embed/video/([^"'/&?@]+)""",
+            r"""dailymotion.[^/]+/video/([^"'/&?@]+)_.*""",
+            r"""dai.ly/([^"'/&?@]+)""",
         ]
     },
     'crosstv': {
@@ -67,6 +120,18 @@ PROVIDERS = {
         'matches': [
             r"""embed.cdn01.[^/]+/player.php\?.*?&id=([^"'/&?@]+)""",
             r"""flashvars='.*?id=([^"'/&?@]+).*?tvButtonID=crosstv""",
+        ]
+    },
+    'facebook': {
+        'link_template': '//www.facebook.com/video/embed?video_id={video_id}',
+        'embed_template': '<iframe width="480" height="395" '
+                          'src="{video_link}" frameborder="0"></iframe>',
+        'validation_template': 'https://www.facebook.com/video.php?v='
+                               '{video_id}',
+        'matches': [
+            r"""facebook.[^/]+/video.php\?[^v]*v\=([^"'/&?@]+)""",
+            r"""facebook.[^/]+/video/embed\?video_id\=([^"'/&?@]+)""",
+            r"""facebook.[^/]+/[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+/([^"'/&?@]+)""",
         ]
     },
 }

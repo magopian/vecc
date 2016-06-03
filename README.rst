@@ -56,6 +56,7 @@ Usage
         validate        validate that the video is still available
 
 
+
 Sub-commands
 ============
 
@@ -64,6 +65,7 @@ Sub-commands
   the video is still available.
 * ``validate``: takes a video id and provider, and check if it's still
   available.
+
 
 
 Return codes
@@ -88,10 +90,41 @@ Example
     This video is still valid
 
 
+API
+===
+
+* ``extract``: takes a video embed code and a list of streaming video types (i.e. like .flv or .mp4) for direct video urls and return the following values:
+
+  - ``status``: ``True`` if ``vecc`` has extracted video info, ``False`` else. See ``errno`` and ``errmsg`` for extended info about error
+  - ``video_id``: extracted video ID
+  - ``provider``: recognized provider
+  - ``clean_code``: embeded code
+  - ``real_link``: web browser link to video with player
+  - ``title``: video title string
+  - ``description``: description or text content of the video (string)
+  - ``image``: url link to image preview of video
+  - ``duration``: duration of video in format ``HH:MM:SS``
+  - ``created_date``: when video was published (python date)
+  - ``errno``: if ``errno`` > 0: HTTP request error code or specific API error code, if ``errno`` == ``-1``: global connection error, i.e. no connection to provider (no internet connection or provider website down), if ``errno`` == ``-2``: wrong code format
+  - ``errmsg``: error message related to error code.
+
+
+Code example
+============
+
+::
+
+    # import extract from vecc library
+    from vecc import extract
+
+    video_link = 'a video url'
+    video_infos = extract(video_link, ['mp4', 'flv'])
+
+
 Providers
 =========
 
-Video providers (Google video, Youtube, Vimeo, Dailymotion...) are configured
+Video providers (Google video, Youtube, Vimeo, Dailymotion, Facebook...) are configured
 in the ``vecc/providers.py`` file.
 
 Each provider configuration consists of:
@@ -113,6 +146,26 @@ Each provider configuration consists of:
 
 Changelog
 =========
+
+* **v1.0**:
+
+  * lots of bugfixes after testing 20000 different video links, first mature version
+
+* **v0.16**:
+
+  * added created_date info
+
+* **v0.15**:
+
+  * added facebook API
+
+* **v0.14**:
+
+  * added streaming providers
+
+* **v0.13**:
+
+  * added extract function
 
 * **v0.12**:
 
